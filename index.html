@@ -1,4 +1,4 @@
-```html id="a4r8k2"
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,6 +38,13 @@ height:100px;
 margin-top:20px;
 }
 
+#messagePro{
+display:none;
+color:yellow;
+font-size:22px;
+margin-top:20px;
+}
+
 @keyframes glitch{
 0%{transform:translate(2px,2px);}
 25%{transform:translate(-2px,-2px);}
@@ -55,6 +62,7 @@ animation:glitch 0.3s infinite;
   #final{font-size:24px;}
   #countdown{font-size:50px;}
   #sticker{width:80px;height:80px;}
+  #messagePro{font-size:18px;}
 }
 </style>
 
@@ -73,6 +81,10 @@ TON TÉLÉPHONE EST PIRATÉ 😈
 
 <img id="sticker" src="https://i.imgur.com/6X1dVbO.png" alt="Sticker souriant">
 
+<div id="messagePro">
+Si tu as des amis commerçants qui ont besoin d’un site pour leur boutique, fais-moi signe !
+</div>
+
 <script>
 setTimeout(function(){document.getElementById("text").innerText="Accès aux données...";},2000);
 setTimeout(function(){document.getElementById("text").innerText="Localisation trouvée...";},4000);
@@ -90,6 +102,7 @@ document.body.style.background="red";
 document.getElementById("countdown").style.display="none";
 document.getElementById("final").style.display="block";
 document.getElementById("sticker").style.display="block";
+document.getElementById("messagePro").style.display="block";
 }else{
 n--;
 setTimeout(compte,1000);
