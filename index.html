@@ -1,115 +1,184 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sécurité</title>
+<title>Pour Fany 💛</title>
 
 <style>
-body{
-background:black;
-color:#00ff00;
-font-family:monospace;
-text-align:center;
-padding:20px;
-font-size:20px;
-transition:0.5s;
-overflow-y:auto;
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
 }
 
-#countdown{
-font-size:60px;
-color:red;
-display:none;
+/* INTRO */
+#intro {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
 }
 
-#final{
-display:none;
-font-size:30px;
-color:white;
-margin-top:20px;
+#intro button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background: white;
+    color: #e84393;
+    cursor: pointer;
 }
 
-#sticker{
-display:none;
-width:100px;
-height:100px;
-margin-top:20px;
+/* MAIN */
+#main {
+    display: none;
+    height: 100vh;
+    background: linear-gradient(270deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#messagePro{
-display:none;
-color:yellow;
-font-size:22px;
-margin-top:20px;
+/* CARD */
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
-@keyframes glitch{
-0%{transform:translate(2px,2px);}
-25%{transform:translate(-2px,-2px);}
-50%{transform:translate(2px,-2px);}
-75%{transform:translate(-2px,2px);}
-100%{transform:translate(0,0);}
+p {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
 }
 
-#final span{
-animation:glitch 0.3s infinite;
+p:nth-child(1){animation-delay:1s;}
+p:nth-child(2){animation-delay:2s;}
+p:nth-child(3){animation-delay:3s;}
+p:nth-child(4){animation-delay:4s;}
+p:nth-child(5){animation-delay:5s;}
+p:nth-child(6){animation-delay:6s;}
+
+@keyframes fadeIn {
+    to {opacity:1;}
 }
 
-@media (max-width:600px){
-  body {font-size:18px;}
-  #final{font-size:24px;}
-  #countdown{font-size:50px;}
-  #sticker{width:80px;height:80px;}
-  #messagePro{font-size:18px;}
+/* BOUTON */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background: #e84393;
+    color: white;
+    cursor: pointer;
+}
+
+/* FLEURS */
+.flower {
+    position: absolute;
+    font-size: 25px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    from {transform: translateY(-10vh);}
+    to {transform: translateY(100vh);}
 }
 </style>
-
 </head>
 
 <body>
 
-<div id="text">Analyse du téléphone...</div>
-
-<div id="countdown">10</div>
-
-<div id="final">
-⚠️ <span>BELELOU</span> ⚠️ <br>
-TON TÉLÉPHONE EST PIRATÉ 😈
+<!-- INTRO -->
+<div id="intro">
+    <h1>Fany 💛</h1>
+    <p>J’ai quelque chose pour toi…</p>
+    <button onclick="start()">Clique ici</button>
 </div>
 
-<img id="sticker" src="https://i.imgur.com/6X1dVbO.png" alt="Sticker souriant">
+<!-- MAIN -->
+<div id="main">
+    <div class="card">
 
-<div id="messagePro">
-Si tu as des amis commerçants qui ont besoin d’un site pour leur boutique, fais-moi signe !
+        <p>Joyeuses Pâques Fany 🐣</p>
+        <p>Je voulais vraiment te souhaiter une belle fête…</p>
+        <p>Tu es importante pour moi, plus que tu ne le penses.</p>
+        <p>Ta voix me manque… et même tes caprices me manquent.</p>
+        <p>Tu me manques vraiment 💛</p>
+        <p>Et si tu en as envie… j’aimerais passer un peu de temps avec toi demain.</p>
+
+        <button onclick="final()">Clique encore…</button>
+
+    </div>
 </div>
+
+<!-- MUSIQUE -->
+<audio id="music" loop autoplay>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
 
 <script>
-setTimeout(function(){document.getElementById("text").innerText="Accès aux données...";},2000);
-setTimeout(function(){document.getElementById("text").innerText="Localisation trouvée...";},4000);
-setTimeout(function(){
-document.getElementById("text").style.display="none";
-document.getElementById("countdown").style.display="block";
-compte();
-},6000);
+function start() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("main").style.display = "flex";
 
-let n = 10;
-function compte(){
-document.getElementById("countdown").innerText = n;
-if(n==0){
-document.body.style.background="red";
-document.getElementById("countdown").style.display="none";
-document.getElementById("final").style.display="block";
-document.getElementById("sticker").style.display="block";
-document.getElementById("messagePro").style.display="block";
-}else{
-n--;
-setTimeout(compte,1000);
+    document.getElementById("music").play();
+
+    // fleurs qui tombent
+    for (let i = 0; i < 30; i++) {
+        let f = document.createElement("div");
+        f.innerHTML = "🌸";
+        f.className = "flower";
+        f.style.left = Math.random() * 100 + "vw";
+        f.style.animationDuration = (Math.random() * 5 + 5) + "s";
+        document.body.appendChild(f);
+    }
 }
+
+function final() {
+    document.body.innerHTML = `
+    <div style="
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        background:linear-gradient(135deg,#ff758c,#ff7eb3);
+        color:white;
+        text-align:center;
+        font-family:sans-serif;
+        padding:20px;
+    ">
+        <h1>Fany 💛</h1>
+
+        <p style="max-width:600px; font-size:22px;">
+            Joyeuses Pâques encore… 🐣
+        </p>
+
+        <p style="max-width:600px;">
+            Je ne veux pas te mettre de pression…
+            mais j’aimerais vraiment passer un moment avec toi demain,
+            même juste un petit instant.
+        </p>
+
+        <p style="margin-top:20px;">
+            Tu comptes énormément pour moi 💛
+        </p>
+
+        <p>🌸❤️</p>
+    </div>
+    `;
 }
 </script>
 
 </body>
 </html>
-```
